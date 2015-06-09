@@ -7,33 +7,24 @@ title = Network Latency Grapher
 remark = Welcome to the SmokePing website of xxx Company. \
          Here you will learn all about the latency of our network.
 
-+ Local
-
-menu = Local
-title = Local Network
-#parents = owner:/Test/James location:/
-
-++ LocalMachine
-
-menu = Local Machine
-title = This host
-host = localhost
-#alerts = someloss
 
 + Hosts
-
-menu = Hosts
-title = Hosts
+menu = All_Hosts
+title = All Hosts
 
 {% for sm_group in smokeping_groups %}  
 
 ++ {{sm_group['name']}}
 
-{% for host in sm_group['hosts'] %}
+menu = {{sm_group['menu']}}
+title = {{sm_group['title']}}
 
-menu = host['menu']
-title = host['title']
-host = host['host']
+{% for entry in sm_group['hosts'] %}
+
++++ {{entry['name']}}
+menu = {{entry['menu']}}
+title = {{entry['title']}}
+host = {{entry['host']}}
 
 {% endfor %}
 {% endfor %}
