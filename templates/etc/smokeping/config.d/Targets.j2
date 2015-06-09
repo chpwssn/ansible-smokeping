@@ -20,21 +20,23 @@ title = This host
 host = localhost
 #alerts = someloss
 
-+ Other
++ Hosts
 
-menu = Other
-title = Other Hosts
+menu = Hosts
+title = Hosts
 
-++ google
+{% for sm_group in smokeping_groups %}  
 
-menu = google
-title = google.com
-host = google.com
+++ {{sm_group['name']}}
 
-++ yahoo
+{% for host in sm_group['hosts'] %}
 
-menu = yahoo
-title = yahoo.com
-host = yahoo.com
+menu = host['menu']
+title = host['title']
+host = host['host']
+
+{% endfor %}
+{% endfor %}
+
 
 
