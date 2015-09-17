@@ -1,6 +1,6 @@
 ---
 - name: install package smokeping and dependencies
-  apt: pkg={{ item  }} state=installed
+  apt: pkg={{ item  }} state=installed force=yes
   with_items:
     - smokeping
     - sendmail
