@@ -28,3 +28,4 @@
   notify: 
     - restart smokeping
     - restart apache
+  tags: smokeping-targets
