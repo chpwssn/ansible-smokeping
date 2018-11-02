@@ -1,12 +1,12 @@
 ---
 - name: install package smokeping and dependencies
-  apt: pkg={{ item  }} state=installed force=yes
+  apt: pkg={{ item  }} state=present force=yes
   with_items:
     - smokeping
     - sendmail
     
-- name: symbolic link of smokeping config for apache2
-  file: src=/etc/smokeping/apache2.conf dest=/etc/apache2/conf-available/smokeping.conf state=link
+- name: smokeping config for apache2
+  template: src=etc/apache2/conf-available/smokeping.conf dest=/etc/apache2/conf-available/smokeping.conf
   notify: restart apache
   
 - name: enable apache2 smokeping config
